@@ -10,7 +10,7 @@ document.write(
   '<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">'
 );
 document.write(
-  '<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe/css/nexmoe.min.css">'
+  '<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.2/css/nexmoe.min.css">'
 );
 // markdown支持
 document.write(

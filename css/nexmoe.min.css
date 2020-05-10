@@ -11,12 +11,14 @@
     background-color: #fff;
     box-shadow: 0 2px 6px rgba(0,0,0,.04);
 }
+
 .navSize{
     position: relative;
     height: 56px;
     max-width: 1100px;
     margin: 0 auto;
 }
+
 /* 头像 */
 .avatar{
     position: absolute;
@@ -28,6 +30,7 @@
     border-radius: 50%;
     transition: 1.2s;
 }
+
 /* 头像动画 */
 .avatar:hover{
     transform: rotate(360deg);
@@ -36,11 +39,13 @@
     -o-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
 }
+
 .nav_menu{
     position: absolute;
     top: 13px;
     right: 5%;
 }
+
 /* 导航 */
 .menu_ul{
     display: none;
@@ -51,33 +56,38 @@
     height: 30px;
     width: auto;
 }
+
 .menu_li{
     float: left;
     list-style: none;
     margin-left: 15px;
     line-height: 30px;
 }
+
 .menu_li a{
     font-size: 16px;
     color: #7e7e7e;
     transition: color 0.2s ease-out,border 0.2s ease-out,opacity 0.2s ease-out;
     text-decoration: none;
 }
+
 .menu_li a:hover{
     color: #1e89f2;
 }
+
 /* 定义动画 */
 @-webkit-keyframes fadeIn {
-0% {
-opacity: 0; /*初始状态 透明度为0*/
+    0% {
+        opacity: 0; /*初始状态 透明度为0*/
+    }
+    50% {
+        opacity: 0; /*中间状态 透明度为0*/
+    }
+    100% {
+        opacity: 1; /*结尾状态 透明度为1*/
+    }
 }
-50% {
-opacity: 0; /*中间状态 透明度为0*/
-}
-100% {
-opacity: 1; /*结尾状态 透明度为1*/
-}
-}
+
 /* 伪类出现 */
 .nav_menu:hover ul{
     display: inline;
@@ -86,6 +96,7 @@ opacity: 1; /*结尾状态 透明度为1*/
     -webkit-animation-iteration-count: 1; /*动画次数*/
     -webkit-animation-delay: 0s; /*延迟时间*/
 }
+
 /* 图标icon */
 .nav_icon{
     float: left;
@@ -96,6 +107,7 @@ opacity: 1; /*结尾状态 透明度为1*/
     transition: .6s;
     cursor: pointer;
 }
+
 /* 图标动画icon */
 .nav_icon:hover{
     background: url(//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe/images/icon_close.png);
