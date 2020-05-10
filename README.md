@@ -8,7 +8,7 @@
 
 2.将代码部署到 [Cloudflare Workers](https://www.cloudflare.com/)
 
-3.使用 https://cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe/app-v2.js 替换获取代码中的js
+3.使用 https://cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.2/app-v2.js 替换获取代码中的js
 > var html = `
 > 
 > ......
