@@ -1,7 +1,11 @@
 # goIndex-theme-nexmoe
 
 基于 [盘ta](https://github.com/Hidove/goindex) 的js,参考OneIndex的主题nexmoe,魔改美化.
+
 app-v3.js 是基于[yanzai](https://github.com/yanzai/goindex)的js美化的，支持多盘、搜索、分页加载和调用外部播放器等功能
+
+app-v3.js 的模板为GoIndex_v2.js
+
 
 # 使用
 
