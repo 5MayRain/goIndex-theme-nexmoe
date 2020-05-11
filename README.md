@@ -27,7 +27,7 @@ app-v3.js 的模板为GoIndex_v2.js
 
 5.其中app.js有部分链接为外链，app-v2.js的所有链接均连接仓库中的文件
 
-6.app-v3.j地址：https://cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.3/app-v3.js
+6.app-v3.j地址：https://cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.4/app-v3.js
 
 # 预览
 [app-v2.js](https://go.zgh.workers.dev/) 
