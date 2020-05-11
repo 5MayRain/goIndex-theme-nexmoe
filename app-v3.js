@@ -9,6 +9,8 @@
 document.write('<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.3/css/mdui_v2.min.css">');
 document.write('<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.4/css/nexmoe_v2.min.css">');
 document.write('<script src="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.3/js/mdui.min.js"></script>');
+document.write('<script src="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.5/js/flv.min.js"></script>');
+document.write('<script src="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.5/js/DPlayer.min.js"></script>');
 // markdown支持
 document.write('<script src="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.3/js/markdown-it.min.js"></script>');
 document.write('<style>.mdui-appbar .mdui-toolbar{height:56px;font-size:1pc}.mdui-toolbar>i{opacity:.5}.mdui-toolbar>i{padding:0}.mdui-toolbar>a:hover,a.active,a.mdui-typo-headline{opacity:1}.mdui-container{max-width:980px}.mdui-list-item{transition:none}.mdui-list>.th{background-color:initial}.mdui-list-item>a{width:100%;line-height:3pc}.mdui-list-item{margin:2px 0;padding:0}.mdui-toolbar>a:last-child{opacity:1}@media screen and (max-width:980px){.mdui-list-item .mdui-text-right{display:none}.mdui-container{width:100%!important;margin:0}.mdui-toolbar>.mdui-typo-headline,.mdui-toolbar>a:last-child,.mdui-toolbar>i:first-child{display:block}}</style>');
@@ -810,9 +812,7 @@ function file_video(path) {
   const content = `
 <div class="mdui-container-fluid">
 	<br>
-	<video class="mdui-video-fluid mdui-center" preload controls>
-	  <source src="${url}" type="video/mp4">
-	</video>
+	<div class="mdui-video-fluid mdui-center" id="dplayer"></div>
 	<br>${playBtn}
 	<!-- 固定标签 -->
 	<div class="mdui-textfield">
@@ -830,6 +830,24 @@ function file_video(path) {
   $('#copy-link').on('click', () => {
     copyToClipboard(url);
     mdui.snackbar('已复制到剪切板!');
+  });
+
+const dp = new DPlayer({
+    container: document.getElementById("dplayer"),
+    loop: true,
+    lang: 'zh-cn',
+    screenshot: true,
+    preload: 'auto',
+    video: {
+      quality: [
+        {
+          url: url,
+          type: "normal"
+        }
+      ],
+      autoplay: true,
+      defaultQuality: 0
+    }
   });
 }
 
