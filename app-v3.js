@@ -7,7 +7,7 @@
  */
 // 在head 中 加载 必要静态
 document.write('<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.3/css/mdui_v2.min.css">');
-document.write('<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.3/css/nexmoe_v2.min.css">');
+document.write('<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.4/css/nexmoe_v2.min.css">');
 document.write('<script src="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.3/js/mdui.min.js"></script>');
 // markdown支持
 document.write('<script src="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.3/js/markdown-it.min.js"></script>');

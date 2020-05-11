@@ -91,14 +91,14 @@ opacity: 1; /*结尾状态 透明度为1*/
     float: left;
     width: 26px;
     height: 26px;
-    background: url(https://go.zgh.workers.dev/GoIndex/images/icon_menu.png);
+    background: url(../images/icon_menu.png);
     background-size:100% 100%;
     transition: .6s;
     cursor: pointer;
 }
 /* 图标动画icon */
 .nav_icon:hover{
-    background: url(https://go.zgh.workers.dev/GoIndex/images/icon_close.png);
+    background: url(../images/icon_close.png);
     background-size:100% 100%;
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
