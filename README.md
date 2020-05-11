@@ -30,4 +30,6 @@ app-v3.js 的模板为GoIndex_v2.js
 6.app-v3.j地址：https://cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.3/app-v3.js
 
 # 预览
-[app-v2.js](https://go.zgh.workers.dev/) [app-v3.js](https://demo.zgh.workers.dev/) 
+[app-v2.js](https://go.zgh.workers.dev/) 
+
+[app-v3.js](https://demo.zgh.workers.dev/) 
