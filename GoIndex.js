@@ -21,7 +21,7 @@ var html = `
   <title>${authConfig.siteName}</title>
   <link rel="shortcut icon" href="${authConfig.siteIcon}" type="image/x-icon" />
 <!--  <script src="//lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script> -->
-  <script src="//cdn.jsdelivr.net/combine/gh/Hidove/goindex/app.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.2/app-v2.js"></script>
 </head>
 <body>
 </body>

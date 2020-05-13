@@ -131,7 +131,7 @@ function html(current_drive_order = 0, model = {}) {
     window.current_drive_order = ${current_drive_order};
     window.UI = JSON.parse('${JSON.stringify(uiConfig)}');
   </script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.5/app-v3.js"></script>
 </head>
 <body>
 </body>
