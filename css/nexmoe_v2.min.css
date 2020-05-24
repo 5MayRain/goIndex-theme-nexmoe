@@ -163,7 +163,8 @@ opacity: 1; /*结尾状态 透明度为1*/
 }
 
 .mdui-select {
-    padding-right: 50px
+    padding-right: 50px;
+    margin-right: 20px !important;
 }
 
 .mdui-select-selected {
@@ -216,4 +217,9 @@ opacity: 1; /*结尾状态 透明度为1*/
     border-radius: 10px;
     -webkit-box-shadow: 0 0.2em 1em rgba(50, 50, 50, 0.8);
     box-shadow: 0 0.2em 1em rgba(50, 50, 50, 0.8);
+}
+
+.nav-style > a:hover {
+    background-color: #1e89f2;
+    color: #ffff;
 }

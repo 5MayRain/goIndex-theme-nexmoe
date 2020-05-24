@@ -7,13 +7,13 @@
  */
 // 在head 中 加载 必要静态
 document.write('<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.3/css/mdui_v2.min.css">');
-document.write('<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.4/css/nexmoe_v2.min.css">');
+document.write('<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.6/css/nexmoe_v2.min.css">');
 document.write('<script src="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.3/js/mdui.min.js"></script>');
 document.write('<script src="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.5/js/flv.min.js"></script>');
 document.write('<script src="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.5/js/DPlayer.min.js"></script>');
 // markdown支持
 document.write('<script src="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.3/js/markdown-it.min.js"></script>');
-document.write('<style>.mdui-appbar .mdui-toolbar{height:56px;font-size:1pc}.mdui-toolbar>i{opacity:.5}.mdui-toolbar>i{padding:0}.mdui-toolbar>a:hover,a.active,a.mdui-typo-headline{opacity:1}.mdui-container{max-width:980px}.mdui-list-item{transition:none}.mdui-list>.th{background-color:initial}.mdui-list-item>a{width:100%;line-height:3pc}.mdui-list-item{margin:2px 0;padding:0}.mdui-toolbar>a:last-child{opacity:1}@media screen and (max-width:980px){.mdui-list-item .mdui-text-right{display:none}.mdui-container{width:100%!important;margin:0}.mdui-toolbar>.mdui-typo-headline,.mdui-toolbar>a:last-child,.mdui-toolbar>i:first-child{display:block}}</style>');
+document.write('<style>.mdui-appbar .mdui-toolbar{height:56px;font-size:1pc}.mdui-toolbar>i{opacity:.5}.mdui-toolbar>i{padding:0}.mdui-toolbar>a:hover,a.active,a.mdui-typo-headline{opacity:1}.mdui-container{max-width:980px}.mdui-list-item{transition:none}.mdui-list>.th{background-color:initial}.mdui-list-item>a{width:100%;line-height:3pc}.mdui-list-item{margin:2px 0;padding:0}.mdui-toolbar>a:last-child{opacity:1}@media screen and (max-width:980px){.mdui-list-item .mdui-text-right{display:none}.mdui-container{width:100%!important;margin:0}}</style>');
 // add custome theme and darkmode
 if (UI.dark_mode) {
   document.write(`<style>* {box-sizing: border-box}body{color:rgba(255,255,255,.87);background-color:#333232}.mdui-theme-primary-${UI.main_color} .mdui-color-theme{background-color:#232427!important}</style>`);
@@ -38,8 +38,8 @@ function init() {
 </header>
 <div class="mdui-container">
 	<div class="mdui-container-fluid">
-		<div id="nav" class="mdui-toolbar nexmoe-item "></div> 
-	</div>
+		<div id="nav" class="mdui-toolbar nexmoe-item nav-style"> </div>
+    </div>
 	<div class="mdui-container-fluid">
 		<div id="head_md" class="mdui-typo nexmoe-item" style="display:none;padding: 20px 0;"></div>
 		<div id="content" class="nexmoe-item"></div>
@@ -113,12 +113,14 @@ function title(path) {
     $('title').html(`${document.siteName} - ${drive_name} - ${path}`);
 }
 
-// 渲染导航栏
+// 渲染搜索栏
 function nav(path) {
   var model = window.MODEL;
   var html = "";
   var cur = window.current_drive_order || 0;
+
   // html += `<a href="/${cur}:/" class="mdui-typo-headline folder">${document.siteName}</a>`;
+
   var names = window.drive_names;
   /*html += `<button class="mdui-btn mdui-btn-raised" mdui-menu="{target: '#drive-names'}"><i class="mdui-icon mdui-icon-left material-icons">share</i> ${names[cur]}</button>`;
   html += `<ul class="mdui-menu" id="drive-names" style="transform-origin: 0px 0px; position: fixed;">`;
@@ -134,6 +136,7 @@ function nav(path) {
   });
   html += `</select>`;
 
+  html += `<a href="/${cur}:/" class="mdui-typo-headline folder">${document.siteName}</a>`;
   if (!model.is_search_page) {
     var arr = path.trim('/').split('/');
     var p = '/';
@@ -146,10 +149,11 @@ function nav(path) {
         if (n == '') {
           break;
         }
-        // html += `<i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i><a class="folder" href="/${cur}:${p}">${n}</a>`;
+        html += `<i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i><a class="folder" href="/${cur}:${p}">${n}</a>`;
       }
     }
   }
+
   var search_text = model.is_search_page ? (model.q || '') : '';
   const isMobile = Os.isMobile;
   var search_bar = `<div class="mdui-toolbar-spacer"></div>
