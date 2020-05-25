@@ -307,7 +307,7 @@ function render_search_result_list(){var content=`
 	 <div class="mdui-row"> 
 	  <ul id="list" class="mdui-list"> 
 	  </ul> 
-	  <div id="count" class="mdui-hidden mdui-center mdui-text-center mdui-m-b-3 mdui-typo-subheading mdui-text-color-blue-grey-500">? <span class="number"></span> ?</div>
+	  <div id="count" class="mdui-hidden mdui-center mdui-text-center mdui-m-b-3 mdui-typo-subheading mdui-text-color-blue-grey-500">Total <span class="number"></span> Item(s)</div>
 	 </div>
 	 <div id="readme_md" class="mdui-typo" style="display:none; padding: 20px 0;"></div>
 	`;$("#content").html(content);$("#list").html(`<div class="mdui-progress"><div class="mdui-progress-indeterminate"></div></div>`);$("#readme_md").hide().html("");$("#head_md").hide().html("");function searchSuccessCallback(res,prevReqParams){$("#list").data("nextPageToken",res.nextPageToken).data("curPageIndex",res.curPageIndex);$("#spinner").remove();if(res.nextPageToken===null){$(window).off("scroll");window.scroll_status.event_bound=!1;window.scroll_status.loading_lock=!1;append_search_result_to_list(res.data.files)}else{append_search_result_to_list(res.data.files);if(window.scroll_status.event_bound!==!0){$(window).on("scroll",function(){var scrollTop=$(this).scrollTop();var scrollHeight=getDocumentHeight();var windowHeight=$(this).height();if(scrollTop+windowHeight>scrollHeight-(Os.isMobile?130:80)){if(window.scroll_status.loading_lock===!0){return}
