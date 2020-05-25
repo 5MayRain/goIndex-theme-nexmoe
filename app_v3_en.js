@@ -375,7 +375,7 @@ function file_video(path){const url=window.location.origin+path;let player_items
 	</div>
 </div>
 <a href="${url}" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
-	`;$("#content").html(content);$("#copy-link").on("click",()=>{copyToClipboard(url);mdui.snackbar("???????!")});const dp=new DPlayer({container:document.getElementById("dplayer"),loop:!0,lang:"zh-cn",screenshot:!0,preload:"auto",video:{quality:[{url:url,type:"normal",},],autoplay:!0,defaultQuality:0,},})}
+	`;$("#content").html(content);$("#copy-link").on("click",()=>{copyToClipboard(url);mdui.snackbar("???????!")});const dp=new DPlayer({container:document.getElementById("dplayer"),loop:!0,screenshot:!0,preload:"auto",video:{quality:[{url:url,type:"normal",},],autoplay:!0,defaultQuality:0,},})}
 function file_audio(path){var url=window.location.origin+path;var content=`
 <div class="mdui-container-fluid">
 	<br>
