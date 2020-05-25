@@ -14,12 +14,12 @@ Use
 
 3. Deploy code to Cloudflare Workers
 
-4. Replace the js in the get code with https://rawcdn.githack.com/icodelifee/goIndex-theme-nexmoe/d5f6a22701b3308e93d6b0db73a21c4f51b407f8/app_v3_en.js
+4. Replace the js in the get code with https://cdn.jsdelivr.net/gh/icodelifee/goIndex-theme-nexmoe@master/app_v3_en.js
 
 ``` js
 var html = '
 ......
-<script src="https://rawcdn.githack.com/icodelifee/goIndex-theme-nexmoe/d5f6a22701b3308e93d6b0db73a21c4f51b407f8/app_v3_en.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/icodelifee/goIndex-theme-nexmoe@master/app_v3_en.js"></script>
 ......
 `;
 ```
