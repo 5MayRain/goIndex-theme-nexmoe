@@ -10,11 +10,13 @@ This is just a English translation of the theme by @5MayRain : [Repo](https://gi
 All credits goes to him/her.
 
 ### How to Use
-1. Open the https://install.kenci.workers.dev/ website, verify and get the code
+1. Open https://install.kenci.workers.dev
 
-2. Copy in the id and refresh token etc. obtained into index.js
+2. Complete authorisation and input all the details and generate code
 
-3. Deploy index.js code to Cloudflare Workers
+3. Head over to the index.js file and input the client id ,client secret, refresh token and root id from the code generated in step 2
+
+4. Deploy this index.js code to Cloudflare Workers
 
 ### Extra Options
 ``` js
