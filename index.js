@@ -47,7 +47,8 @@ const uiConfig = {
   "accent_color": "blue",
   "fluid_navigation_bar": true,
   "avatar": "https://i.ibb.co/DwMwdFv/photo-2020-05-25-22-58-28.jpg",
-  "disable_navicon": true
+  "disable_navicon": true,
+  "language": "en" //en , default (zh-cn)
 };
 
 /**
@@ -84,6 +85,12 @@ const CONSTS = new (class {
 var gds = [];
 
 function html(current_drive_order = 0, model = {}) {
+  let url;
+  if (uiConfig.language == "en") {
+    url = "https://cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@master/app_v3_en.min.js"
+  } else {
+    url = "https://cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@master/app-v3.js"
+  }
   return `
 <!DOCTYPE html>
 <html>
@@ -98,7 +105,7 @@ function html(current_drive_order = 0, model = {}) {
     window.current_drive_order = ${current_drive_order};
     window.UI = JSON.parse('${JSON.stringify(uiConfig)}');
   </script>
-  <script src="https://cdn.jsdelivr.net/gh/Genos2000/goIndex-theme-nexmoe@master/app_v3_en.js"></script>
+  <script src=${url}></script>
 </head>
 <body>
 </body>

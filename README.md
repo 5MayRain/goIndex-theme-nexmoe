@@ -6,9 +6,6 @@ Based on panta js, refer to OneIndex's theme nexmoe, magic change beautification
 
 App-v3.js is based on yanzai's js beautification, supports features such as multi-disk, search, pagination and call-to-external player, plus DPlayer playback.
 
-This is just a English translation of the theme by @5MayRain : [Repo](https://github.com/5MayRain/goIndex-theme-nexmoe) </br>
-All credits goes to him/her.
-
 ### How to Use
 1. Open https://install.kenci.workers.dev
 
@@ -22,8 +19,15 @@ All credits goes to him/her.
 ``` js
 const uiConfig = {
   .......
-  "avatar": "https://i.ibb.co/jW0TDZH/image.png",  // Changes the avatar image in the navbar
-  "disable_navicon": true // Disables useless nav menu in navbar
+  "avatar": "https://i.ibb.co/jW0TDZH/image.png",  // Changes the avatar image in the navbar (Changeable only if language is en)
+  "disable_navicon": true // Disables useless nav menu in navbar (Changeable only if language is en)
+  "language": "en" // en - english, default or anythin else for zh-cn
   .......
 };
 ```
+
+### Demo (Chinese)
+
+[app-v2.js](https://go.zgh.workers.dev/) 
+
+[app-v3.js](https://demo.zgh.workers.dev/) 
