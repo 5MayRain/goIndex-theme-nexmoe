@@ -4,8 +4,9 @@
 
 
 ## 预览
-![light](//cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.0/screenshot/light.jpg)
-![dark](//cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.0/screenshot/dark.jpg)
+![light](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.0/screenshot/light.jpg)
+![dark](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.0/screenshot/dark.jpg)
+
 nexmoe:  [demo.zgh.workers.dev/](https://demo.zgh.workers.dev/)
 
 ## 部署
@@ -28,8 +29,8 @@ themeConfig			//主题配置
 	bimg			//背景图片
 	menu_show		//是否显示菜单
 	menus			//菜单组
-		name		//名称
-		url			//地址
+	name			//名称
+	url			//地址
 ```
 
 ## 更新日志
@@ -39,4 +40,3 @@ themeConfig			//主题配置
 - 界面进行了一定的修改，使其更加的美观
 - 添加了一些的自定义，使用更加简单
 - 添加了亮色和深色的主题
-
