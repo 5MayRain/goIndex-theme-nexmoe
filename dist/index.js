@@ -143,7 +143,7 @@ function html(current_drive_order = 0, model = {}) {
   <title>${authConfig.siteName}</title>
   <link rel="shortcut icon" href="${authConfig.siteIcon}" type="image/x-icon" />
   <style>
-    @import url(${themeConfig.url}/style.css);
+    @import url(${themeConfig.url}@${authConfig.version}/dist/style.css);
   </style>
   <script>
     window.drive_names = JSON.parse('${JSON.stringify(authConfig.roots.map(it => it.name))}');
@@ -152,7 +152,7 @@ function html(current_drive_order = 0, model = {}) {
     window.ThemeConfig = JSON.parse('${JSON.stringify(themeConfig)}');
   </script>
   <script src="//cdn.jsdelivr.net/combine/gh/jquery/jquery@3.2/dist/jquery.min.js"></script>
-  <script src="${themeConfig.url}@${authConfig.version}/themes/${themeConfig.theme}/app.js"></script>
+  <script src="${themeConfig.url}@${authConfig.version}/dist/themes/${themeConfig.theme}/app.js"></script>
   <script src="//cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"></script>
 </head>
 <body>
