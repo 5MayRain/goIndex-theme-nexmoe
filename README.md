@@ -20,17 +20,17 @@ nexmoe:  [demo.zgh.workers.dev/](https://demo.zgh.workers.dev/)
 
 ## 自定义
 ```bash
-themeConfig			//主题配置
+themeConfig				//主题配置
 	url				//仓库地址
-	theme			//主题 ( light:亮色 | dark:深色 )
-	main_color		//主色调
-	accent_color	//强调色
-	avatar			//导航栏头像
-	bimg			//背景图片
-	menu_show		//是否显示菜单
-	menus			//菜单组
-	name			//名称
-	url			//地址
+	theme				//主题 ( light:亮色 | dark:深色 )
+	main_color			//主色调
+	accent_color			//强调色
+	avatar				//导航栏头像
+	bimg				//背景图片
+	menu_show			//是否显示菜单
+	menus				//菜单组
+		name			//名称
+		url			//地址
 ```
 
 ## 更新日志
