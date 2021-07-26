@@ -1,13 +1,10 @@
 const authConfig = {
-  "siteName": "GoIndex", // 网站名称
-  "siteIcon": "", // 网站图标
-  "version": "_4.28", // 程序版本。用户不要手动修改
-  /*"client_id": "202264815644.apps.googleusercontent.com",
-  "client_secret": "X4Z3ca8xfWDb1Voo-F9a7ZxJ",*/
-  // 【注意】强烈推荐使用自己的 client_id 和 client_secret
+  "siteName": "GoIndex",  // 网站名称
+  "siteIcon": "//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.6/images/favicon.ico", //网站图标
+  "version": "2.0.0", // 程序版本
   "client_id": "",
   "client_secret": "",
-  "refresh_token": "", // 授权 token
+  "refresh_token": "",  // 授权token
   /**
    * 设置要显示的多个云端硬盘；按格式添加多个
    * [id]: 可以是 团队盘id、子文件夹id、或者"root"（代表个人盘根目录）；
@@ -24,7 +21,10 @@ const authConfig = {
   "roots": [
     {
       id: "root",
-      name: "个人盘"
+      name: "root",
+      user: '',
+      pass: "",
+      protect_file_link: true
     },
     {
       id: "drive_id",
@@ -48,7 +48,7 @@ const authConfig = {
    * 如果设置的值过小，会导致文件列表页面滚动条增量加载（分页加载）失效；
    * 此值的另一个作用是，如果目录内文件数大于此设置值（即需要多页展示的），将会对首次列目录结果进行缓存。
    */
-  "files_list_page_size": 500,
+  "files_list_page_size": 50,
   /**
    * 搜索结果页面每页显示的数量。【推荐设置值为 50 到 1000 之间】；
    * 如果设置大于1000，会导致请求 drive api 时出错；
@@ -67,17 +67,34 @@ const authConfig = {
 };
 
 /**
- * web ui 设置
+ * 主题配置
  */
-const uiConfig = {
-  // 此版本只支持 material
-  "theme": "material", // DO NOT set it to classic
-  "dark_mode": false,
+const themeConfig = {
+  // 地址
+  "url": "//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe",
+  // 主题 ( light:亮色 | dark:深色 )
+  "theme": "light", 
+  // 主色
   "main_color": "blue-grey",
+  // 强调色
   "accent_color": "blue",
-  /*"main_color": "light-green",
-  "accent_color": "green",*/
-  "fluid_navigation_bar": true,
+  // 头像
+  "avatar": "//cdn.jsdelivr.net/gh/5MayRain/ImageHosting/Blog/Website/avatar.png",
+  // 背景图片
+  "bimg": "//cdn.jsdelivr.net/gh/5MayRain/ImageHosting/Blog/Posts/2021/07/20/cover_01.jpg",
+  //显示菜单
+  "menu_show": true,
+  // 菜单
+  "menus": [
+    {
+      name: "博客",
+      url: "//mrzgh.top"
+    },
+    {
+      name: "登录",
+      url: "//drive.google.com"
+    }
+  ],
 };
 
 /**
@@ -125,13 +142,18 @@ function html(current_drive_order = 0, model = {}) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
   <title>${authConfig.siteName}</title>
   <link rel="shortcut icon" href="${authConfig.siteIcon}" type="image/x-icon" />
+  <style>
+    @import url(${themeConfig.url}/style.css);
+  </style>
   <script>
     window.drive_names = JSON.parse('${JSON.stringify(authConfig.roots.map(it => it.name))}');
     window.MODEL = JSON.parse('${JSON.stringify(model)}');
     window.current_drive_order = ${current_drive_order};
-    window.UI = JSON.parse('${JSON.stringify(uiConfig)}');
+    window.ThemeConfig = JSON.parse('${JSON.stringify(themeConfig)}');
   </script>
-  <script src="//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.5/app-v3.js"></script>
+  <script src="//cdn.jsdelivr.net/combine/gh/jquery/jquery@3.2/dist/jquery.min.js"></script>
+  <script src="${themeConfig.url}@${authConfig.version}/themes/${themeConfig.theme}/app.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"></script>
 </head>
 <body>
 </body>
@@ -851,4 +873,3 @@ String.prototype.trim = function (char) {
   }
   return this.replace(/^\s+|\s+$/g, '');
 };
-//# sourceMappingURL=/sm/66a94fc3ec45fb7c78cc4edadd8e448d9b1c735f8c0cebcf7bbb4b40b9caacde.map

@@ -1,0 +1,75 @@
+.titleBar {
+    background-color: #30475E;
+    box-shadow: 0 0 10px #222831;
+}
+
+.titleBar_item a:hover {
+    background-color: #222831;
+}
+
+.titleBar_item a:hover i {
+    color: #DDDDDD;
+}
+
+.titleBar_link>i {
+    color: #DDDDDD;
+}
+
+.nexmoe-item {
+    -webkit-box-shadow: 0 0.2em 1em rgba(34, 40, 49, .3);
+    box-shadow: 0 0.2em 1em rgba(34, 40, 49, .3);
+    background-color: #30475E;
+    color: #DDDDDD;
+}
+
+.mdui-toolbar>a {
+    border: none; 
+}
+
+.mdui-list-item {
+    border-color: #2A384A !important;
+}
+
+.mdui-textfield-label , .mdui-textfield-input {
+    color: #DDDDDD;
+}
+
+.titleBar_exhibit {
+    background-color: #30475E;
+    border-top: 2px solid #222831;
+}
+
+.menu_list p {
+    color: #FFFFFF;
+    border-bottom: 1px solid #2F455C;
+}
+
+.menu_list .menu_list_item {
+    color: #DDDDDD;
+}
+
+.mdui-dialog {
+    color: #DDDDDD !important; 
+    background-color: #30475E !important;
+}
+
+.mdui-dialog-content , .mdui-dialog-content a {
+    color: #DDDDDD !important; 
+}
+
+.mdui-typo-title {
+    color: #DDDDDD !important; 
+}
+
+.bimg {
+    background-color: #222831 !important;
+}
+
+.menu_list .menu_list_item:hover {
+    background-color: #222831;
+    color: #DDDDDD;
+}
+
+.titleBar .titleBar_container .titleBar_avatar img {
+    border-color: rgba(42,64,87,0.5);
+}
