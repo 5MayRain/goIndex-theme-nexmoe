@@ -1,7 +1,7 @@
 const authConfig = {
   "siteName": "GoIndex",  // 网站名称
   "siteIcon": "//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.6/images/favicon.ico", //网站图标
-  "version": "2.0.0", // 程序版本
+  "version": "2.0.1", // 程序版本
   "client_id": "",
   "client_secret": "",
   "refresh_token": "",  // 授权token
@@ -87,11 +87,11 @@ const themeConfig = {
   // 菜单
   "menus": [
     {
-      name: "博客",
+      name: "Blog",
       url: "//mrzgh.top"
     },
     {
-      name: "登录",
+      name: "Log in",
       url: "//drive.google.com"
     }
   ],

@@ -1,4 +1,4 @@
-# GoIndex-theme-nexmoe
+<!-- # GoIndex-theme-nexmoe -->
 
 主题基于 [yanzai/goindex](https://github.com/yanzai/goindex)
 
@@ -33,10 +33,23 @@ themeConfig				//主题配置
 		url			//地址
 ```
 
+## 获取团队盘
+- [https://td.hackgence.com/](https://td.hackgence.com/)
+- [https://team.hackgence.com/](https://team.hackgence.com/)
+
 ## 更新日志
+
+### v2.0.1
+- 添加plyr播放器
+- 支持播放 `hls` [预览](https://demo.zgh.workers.dev/1:/Video/Live/LiSA%20-%20Rising%20Hope/LiSA%20-%20Rising%20Hope.m3u8?a=view)
+- 支持播放 `flv` [预览](https://demo.zgh.workers.dev/1:/Video/Live/%E5%8D%97%E6%9D%A1%E7%88%B1%E4%B9%83%20-%20Only%20My%20Railgun/%E5%8D%97%E6%9D%A1%E7%88%B1%E4%B9%83%20-%20Only%20My%20Railgun.flv?a=view)
+- 支持外挂字幕，字幕仅支持 `Webvtt` 格式 [预览](https://demo.zgh.workers.dev/1:/Video/Movie/%E9%A6%99%E6%B8%AF/%E6%91%A9%E7%99%BB%E4%BB%99%E5%B1%A5%E5%A5%87%E7%BC%98/%E6%91%A9%E7%99%BB%E4%BB%99%E5%B1%A5%E5%A5%87%E7%BC%98.mp4?a=view)
+- 字幕文件名必须和视频名相同，否则不可用
+- 视频封面的格式需为 `jpg` ，名字需和视频名相同
 
 ### v2.0.0
 - 之前的版本不在适用
 - 界面进行了一定的修改，使其更加的美观
 - 添加了一些的自定义，使用更加简单
 - 添加了亮色和深色的主题
+

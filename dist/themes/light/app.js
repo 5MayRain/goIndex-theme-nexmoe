@@ -1,7 +1,9 @@
 // 在head 中 加载 必要静态
-// document.write('<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">');
-document.write('<script src="//cdn.jsdelivr.net/gh/DIYgod/DPlayer@1.26.0/dist/DPlayer.min.js"></script>');
-document.write('<script src="//cdn.jsdelivr.net/gh/bilibili/flv.js@1.6.0/src/flv.min.js"></script>');
+document.write('<script src="//cdn.jsdelivr.net/npm/hls.js@1.0.7/dist/hls.min.js"></script>');
+document.write('<script src="//cdn.jsdelivr.net/npm/dashjs@4.0.1/dist/dash.all.debug.min.js"></script>');
+document.write('<script src="//cdn.jsdelivr.net/npm/flv.js@1.6.1/dist/flv.min.js"></script>');
+document.write('<script src="//cdn.jsdelivr.net/npm/dplayer@1.26.0/dist/DPlayer.min.js"></script>');
+document.write('<script src="//cdn.jsdelivr.net/npm/plyr@3.6.8/dist/plyr.min.js"></script>');
 // markdown支持
 document.write('<script src="//cdn.jsdelivr.net/npm/markdown-it@12.1.0/dist/markdown-it.min.js"></script>');
 document.write('<style>.bimg{background-image: url('+ThemeConfig.bimg+');}.mdui-appbar .mdui-toolbar{height:56px;font-size:1pc}.mdui-toolbar>*{padding:0 6px;margin:0 2px}.mdui-toolbar>i{opacity:.5}.mdui-toolbar>i{padding:0}.mdui-toolbar>a:hover,a.active,a.mdui-typo-headline{opacity:1}.mdui-list-item{transition:none}.mdui-list>.th{background-color:initial}.mdui-list-item>a{width:100%;line-height:3pc}.mdui-list-item{margin:2px 0;padding:0}.mdui-toolbar>a:last-child{opacity:1}.mdui-container{width:100%!important;margin:0 auto;}</style>');
@@ -428,7 +430,7 @@ function append_files_to_list(path, files) {
         });
       }
       var ext = p.split('.').pop().toLowerCase();
-      if ("|html|php|css|go|java|js|json|txt|sh|md|mp4|webm|avi|bmp|jpg|jpeg|png|gif|m4a|mp3|flac|wav|ogg|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|pdf|".indexOf(`|${ext}|`) >= 0) {
+      if ("|html|php|css|go|java|js|json|txt|sh|md|mp4|webm|avi|bmp|jpg|jpeg|png|gif|m4a|mp3|flac|wav|ogg|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|pdf|m3u8|".indexOf(`|${ext}|`) >= 0) {
         targetFiles.push(filepath);
         p += "?a=view";
         c += " view";
@@ -628,7 +630,7 @@ function append_search_result_to_list(files) {
     } else {
       var c = "file";
       var ext = item.name.split('.').pop().toLowerCase();
-      if ("|html|php|css|go|java|js|json|txt|sh|md|mp4|webm|avi|bmp|jpg|jpeg|png|gif|m4a|mp3|flac|wav|ogg|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|".indexOf(`|${ext}|`) >= 0) {
+      if ("|html|php|css|go|java|js|json|txt|sh|md|mp4|webm|avi|bmp|jpg|jpeg|png|gif|m4a|mp3|flac|wav|ogg|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|m3u8|".indexOf(`|${ext}|`) >= 0) {
         c += " view";
       }
       html += `<li class="mdui-list-item file mdui-ripple" target="_blank"><a id="${item['id']}" gd-type="${item.mimeType}" onclick="onSearchResultItemClick(this)" class="${c}">
@@ -731,11 +733,11 @@ function file(path) {
     return file_code(path);
   }
 
-  if ("|mp4|webm|avi|mkv|".indexOf(`|${ext}|`) >= 0) {
+  if ("|mp4|webm|avi|".indexOf(`|${ext}|`) >= 0) {
     return file_video(path);
   }
 
-  if ("|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|".indexOf(`|${ext}|`) >= 0) {
+  if ("|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|m3u8|".indexOf(`|${ext}|`) >= 0) {
     return file_video(path);
   }
 
@@ -814,6 +816,8 @@ function copyToClipboard(str) {
 // 文件展示 视频 |mp4|webm|avi|
 function file_video(path) {
   const url = window.location.origin + path;
+  var ext = url.split('.').pop().toLowerCase().toLowerCase();
+  var urlPath = url.replace(`.${ext}`, "");
   let player_items = [
     {
       text: 'MXPlayer(Free)',
@@ -846,19 +850,42 @@ function file_video(path) {
       </button>
       <ul class="mdui-menu" id="player-items">${player_items}</ul>`;
 
-  const playUI = `
-  <video class="mdui-video-fluid mdui-center" preload controls>
-    <source src="${url}" type="video/mp4">
-  </video>`;
+  var playerUI;
+  var playerType;
 
+  const plyrUI = `
+  <video id="plyr" class="mdui-video-fluid mdui-center" playsinline controls >
+    <source src="${url}" type="video/mp4" />
+  </video>`;
   const dpUI = `
   <div id="dplayer" class="mdui-video-fluid mdui-center" ></div>
   `;
 
+  playerUI = plyrUI;
+
+  if (ext == 'flv'){
+    playerType = 'flv';
+    playerUI = dpUI;
+  } else if(ext == 'm3u8') {
+    playerType = 'hls';
+    playerUI = dpUI;
+  } else if(ext == 'mpd') {
+    playerType = 'dash';
+    playerUI = dpUI;
+  } else if (ext == 'mp4') {
+    playerType = 'mp4';
+  } else if (ext == 'webm') {
+    playerType = 'webm';
+  } else if (ext == 'ogg') {
+    playerType = 'ogg';
+  } else {
+    playerType = 'mp4';
+  }
+
   var content = `
 <div class="mdui-container-fluid">
 	<br>
-  ${dpUI}
+  ${playerUI}
 	<br>${playBtn}
 	<!-- 固定标签 -->
 	<div class="mdui-textfield">
@@ -878,6 +905,36 @@ function file_video(path) {
     mdui.snackbar('已复制到剪切板!');
   });
 
+  const plyr = new Plyr('#plyr', {
+      blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
+      i18n: {
+          speed: '速度',
+          normal: '正常',
+          quality: '质量',
+          captions: '字幕',
+          disabled: '禁用',
+      },
+  });
+  plyr.source = {
+    type: 'video',
+    sources: [
+      {
+        src: url,
+        type: 'video/' + playerType,
+        size: 1080,
+      },
+    ],
+    poster: urlPath + '.jpg',
+    tracks: [
+      {
+        kind: 'captions',
+        label: 'default',
+        srclang: 'cn',
+        src: urlPath + '.vtt',
+        default: true,
+      },
+    ],
+  };
   const dp = new DPlayer({
     container: document.getElementById('dplayer'),
     autoplay: false,
@@ -891,10 +948,36 @@ function file_video(path) {
         quality: [
             {
                 name: 'HD',
-                url: url,
+                url: url ,
+                type: playerType ,
             }
         ],
         defaultQuality: 0,
+        pic: urlPath + '.jpg',
+    },
+    subtitle: {
+        url: urlPath + '.vtt',
+        type: 'webvtt',
+        fontSize: '25px',
+        bottom: '10%',
+        color: '#b7daff',
+    },
+    pluginOptions: {
+        hls: {
+            // hls config
+        },
+        dash: {
+            // dash config
+        },
+        flv: {
+            // refer to https://github.com/bilibili/flv.js/blob/master/docs/api.md#flvjscreateplayer
+            mediaDataSource: {
+                // mediaDataSource config
+            },
+            config: {
+                // config
+            },
+        },
     },
 });
 
