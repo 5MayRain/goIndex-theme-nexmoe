@@ -873,7 +873,7 @@ function file_video(path) {
         playerUI = dpUI;
     } else if (ext == 'm3u8') {
         playerType = 'customHls';
-        playerUI = dpUI;
+        playerUI = plyrUI;
     } else if (ext == 'mpd') {
         playerType = 'customDash';
         playerUI = dpUI;
