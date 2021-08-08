@@ -4,8 +4,11 @@
 
 
 ## 预览
-![light](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.0/screenshot/light.jpg)
-![dark](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.0/screenshot/dark.jpg)
+![light](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.2/screenshot/light.jpg)
+![dark](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.2/screenshot/dark.jpg)
+![caption](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.2/screenshot/caption.jpg)
+![thumbnails-dplayer](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.2/screenshot/thumbnails-dplayer.jpg)
+![thumbnails-plyr](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.2/screenshot/thumbnails-plyr.jpg)
 
 nexmoe:  [demo.zgh.workers.dev/](https://demo.zgh.workers.dev/)
 
@@ -39,13 +42,22 @@ themeConfig				//主题配置
 
 ## 更新日志
 
+### v2.0.2
+- 支持缩略图
+- DPlayer 缩略图名必须为 `thumbnails.jpg` [预览](https://demo.zgh.workers.dev/1:/Video/Live/%E5%8D%97%E6%9D%A1%E7%88%B1%E4%B9%83%20-%20Only%20My%20Railgun/%E5%8D%97%E6%9D%A1%E7%88%B1%E4%B9%83%20-%20Only%20My%20Railgun.flv?a=view)
+- Plyr 缩略图文件名必须为 `thumbnails.vtt` [预览](https://demo.zgh.workers.dev/1:/Video/Live/%E5%8D%97%E6%9D%A1%E7%88%B1%E4%B9%83%20-%20Only%20My%20Railgun/%E5%8D%97%E6%9D%A1%E7%88%B1%E4%B9%83%20-%20Only%20My%20Railgun.mp4?a=view)
+- 缩略图要和视频处于同一个目录下
+- 缩略图生成 [Plyr](https://github.com/radiantmediaplayer/rmp-create-vtt-thumbnails) [DPlayer](https://github.com/MoePlayer/DPlayer-thumbnails)
+
 ### v2.0.1
-- 添加plyr播放器
+- 添加 Plyr 播放器
 - 支持播放 `hls` [预览](https://demo.zgh.workers.dev/1:/Video/Live/LiSA%20-%20Rising%20Hope/LiSA%20-%20Rising%20Hope.m3u8?a=view)
 - 支持播放 `flv` [预览](https://demo.zgh.workers.dev/1:/Video/Live/%E5%8D%97%E6%9D%A1%E7%88%B1%E4%B9%83%20-%20Only%20My%20Railgun/%E5%8D%97%E6%9D%A1%E7%88%B1%E4%B9%83%20-%20Only%20My%20Railgun.flv?a=view)
 - 支持外挂字幕，字幕仅支持 `Webvtt` 格式 [预览](https://demo.zgh.workers.dev/1:/Video/Movie/%E9%A6%99%E6%B8%AF/%E6%91%A9%E7%99%BB%E4%BB%99%E5%B1%A5%E5%A5%87%E7%BC%98/%E6%91%A9%E7%99%BB%E4%BB%99%E5%B1%A5%E5%A5%87%E7%BC%98.mp4?a=view)
-- 字幕文件名必须和视频名相同，否则不可用
-- 视频封面的格式需为 `jpg` ，名字需和视频名相同
+- 字幕文件名必须和视频名相同，且处于同一个目录下
+- 视频封面的格式需为 `jpg` ，名字需和视频名相同，且处于同一个目录下
+- DPlayer 字幕不可用
+- 仅 `hls` 和 `flv` 使用 DPlayer 播放，其它使用 Plyr 播放 
 
 ### v2.0.0
 - 之前的版本不在适用

@@ -822,6 +822,8 @@ function file_video(path) {
     const url = window.location.origin + path;
     var ext = url.split('.').pop().toLowerCase().toLowerCase();
     var urlPath = url.replace(`.${ext}`, "");
+    var fileName = urlPath.split('/').pop();
+    urlPath = urlPath.substring(0, urlPath.lastIndexOf('/') + 1);
     let player_items = [{
                 text: 'MXPlayer(Free)',
                 href: `intent:${url}#Intent;package=com.mxtech.videoplayer.ad;S.title=${path};end`,
@@ -857,8 +859,7 @@ function file_video(path) {
     var playerType;
 
     const plyrUI = `
-  <video id="plyr" class="mdui-video-fluid mdui-center" playsinline controls >
-    <source src="${url}" type="video/mp4" />
+  <video id="player" class="mdui-video-fluid mdui-center" playsinline controls >
   </video>`;
     const dpUI = `
   <div id="dplayer" class="mdui-video-fluid mdui-center" ></div>
@@ -871,7 +872,7 @@ function file_video(path) {
         playerUI = dpUI;
     } else if (ext == 'm3u8') {
         playerType = 'customHls';
-        playerUI = plyrUI;
+        playerUI = dpUI;
     } else if (ext == 'mpd') {
         playerType = 'customDash';
         playerUI = dpUI;
@@ -911,6 +912,8 @@ function file_video(path) {
     if (ext == 'm3u8') {
         const video = document.querySelector('video');
         const player = new Plyr(video, {
+            controls: ['play-large', 'restart', 'play', 'progress', 'current-time', 'duration', 'mute', 'volume', 'captions', 'settings', 'pip', 'fullscreen'],
+            settings: ['captions', 'quality', 'speed', 'loop'],
             i18n: {
                 speed: '速度',
                 normal: '正常',
@@ -918,10 +921,16 @@ function file_video(path) {
                 captions: '字幕',
                 disabled: '禁用',
             },
+            blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
+            autoplay: true,
+            disableContextMenu: false,
+            loop: {
+                active: true
+            },
             captions: {
                 active: true,
                 update: true,
-                language: 'en'
+                language: 'auto'
             },
         });
 
@@ -938,14 +947,21 @@ function file_video(path) {
         }
         window.player = player;
     } else {
-        const player = new Plyr('#plyr', {
-            blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
+        const player = new Plyr('#player', {
+            controls: ['play-large', 'restart', 'play', 'progress', 'current-time', 'duration', 'mute', 'volume', 'captions', 'settings', 'pip', 'fullscreen'],
+            settings: ['captions', 'quality', 'speed', 'loop'],
             i18n: {
                 speed: '速度',
                 normal: '正常',
                 quality: '质量',
                 captions: '字幕',
                 disabled: '禁用',
+            },
+            blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
+            autoplay: true,
+            disableContextMenu: false,
+            loop: {
+                active: true
             },
         });
         player.source = {
@@ -955,12 +971,16 @@ function file_video(path) {
                 type: 'video/' + playerType,
                 size: 1080,
             }, ],
-            poster: urlPath + '.jpg',
+            poster: urlPath + fileName + '.jpg',
+            previewThumbnails: {
+                enabled: true,
+                src: urlPath + 'thumbnails.vtt',
+            },
             tracks: [{
                 kind: 'captions',
                 label: 'default',
                 srclang: 'cn',
-                src: urlPath + '.vtt',
+                src: urlPath + fileName + '.vtt',
                 default: true,
             }, ],
         };
@@ -969,15 +989,16 @@ function file_video(path) {
 
     const dp = new DPlayer({
         container: document.getElementById('dplayer'),
-        autoplay: false,
+        autoplay: true,
         theme: '#b7daff',
-        loop: false,
+        loop: true,
         lang: 'zh-cn',
         screenshot: true,
         hotkey: true,
         preload: 'auto',
         video: {
-            pic: urlPath + '.jpg',
+            pic: urlPath + fileName + '.jpg',
+            thumbnails: urlPath + 'thumbnails.jpg',
             quality: [{
                 name: 'HD',
                 url: url,
@@ -1010,7 +1031,7 @@ function file_video(path) {
             defaultQuality: 0,
         },
         subtitle: {
-            url: urlPath + '.vtt',
+            url: urlPath + fileName + '.vtt',
             type: 'webvtt',
             fontSize: '25px',
             bottom: '10%',
@@ -1023,12 +1044,14 @@ function file_video(path) {
 // 文件展示 音频 |mp3|flac|m4a|wav|ogg|
 function file_audio(path) {
     var url = window.location.origin + path;
+    var ext = url.split('.').pop().toLowerCase().toLowerCase();
+    const plyrUI = `
+  <audio id="player" class="mdui-center" playsinline controls >
+  </audio>`;
     var content = `
 <div class="mdui-container-fluid">
   <br>
-  <audio class="mdui-center" preload controls>
-    <source src="${url}"">
-  </audio>
+  ` + plyrUI + `
   <br>
   <!-- 固定标签 -->
   <div class="mdui-textfield">
@@ -1043,6 +1066,32 @@ function file_audio(path) {
 <a href="${url}" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
   `;
     $('#content').html(content);
+
+    var playerType;
+
+    if (ext == 'ogg') {
+        playerType = 'ogg';
+    } else {
+        playerType = 'mpeg';
+    }
+
+    const player = new Plyr('audio', {
+        i18n: {
+            speed: '速度',
+            normal: '正常',
+            quality: '质量',
+            captions: '字幕',
+            disabled: '禁用',
+        },
+    });
+    player.source = {
+        type: 'audio',
+        sources: [{
+            src: url,
+            type: 'audio/' + playerType,
+        }, ],
+    };
+    window.player = player;
 }
 
 // 文件展示 pdf  pdf

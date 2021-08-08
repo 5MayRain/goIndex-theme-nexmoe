@@ -1,7 +1,7 @@
 const authConfig = {
   "siteName": "GoIndex",  // 网站名称
   "siteIcon": "//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.6/images/favicon.ico", //网站图标
-  "version": "2.0.1", // 程序版本
+  "version": "2.0.2", // 程序版本
   "client_id": "",
   "client_secret": "",
   "refresh_token": "",  // 授权token
@@ -152,7 +152,7 @@ function html(current_drive_order = 0, model = {}) {
     window.ThemeConfig = JSON.parse('${JSON.stringify(themeConfig)}');
   </script>
   <script src="//cdn.jsdelivr.net/combine/gh/jquery/jquery@3.2/dist/jquery.min.js"></script>
-  <script src="${themeConfig.url}@${authConfig.version}/dist/themes/${themeConfig.theme}/app.js"></script>
+  <script src="${themeConfig.url}@${authConfig.version}/dist/themes/${themeConfig.theme}/app.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"></script>
 </head>
 <body>
