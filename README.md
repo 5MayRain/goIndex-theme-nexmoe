@@ -4,11 +4,11 @@
 
 
 ## 预览
-![light](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.2/screenshot/light.jpg)
-![dark](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.2/screenshot/dark.jpg)
-![caption](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.2/screenshot/caption.jpg)
-![thumbnails-dplayer](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.2/screenshot/thumbnails-dplayer.jpg)
-![thumbnails-plyr](https://cdn.jsdelivr.net/gh/5MayRain/GoIndex-theme-nexmoe@2.0.2/screenshot/thumbnails-plyr.jpg)
+![light](https://raw.githubusercontent.com/5MayRain/goIndex-theme-nexmoe/master/screenshot/light.jpg)
+![dark](https://raw.githubusercontent.com/5MayRain/goIndex-theme-nexmoe/master/screenshot/dark.jpg)
+![caption](https://raw.githubusercontent.com/5MayRain/goIndex-theme-nexmoe/master/screenshot/caption.jpg)
+![thumbnails-dplayer](https://raw.githubusercontent.com/5MayRain/goIndex-theme-nexmoe/master/screenshot/thumbnails-dplayer.jpg)
+![thumbnails-plyr](https://raw.githubusercontent.com/5MayRain/goIndex-theme-nexmoe/master/screenshot/thumbnails-plyr.jpg)
 
 nexmoe:  [demo.zgh.workers.dev/](https://demo.zgh.workers.dev/)
 
