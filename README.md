@@ -48,6 +48,7 @@ themeConfig				//主题配置
 - Plyr 缩略图文件名必须为 `thumbnails.vtt` [预览](https://demo.zgh.workers.dev/1:/Video/Live/%E5%8D%97%E6%9D%A1%E7%88%B1%E4%B9%83%20-%20Only%20My%20Railgun/%E5%8D%97%E6%9D%A1%E7%88%B1%E4%B9%83%20-%20Only%20My%20Railgun.mp4?a=view)
 - 缩略图要和视频处于同一个目录下
 - 缩略图生成 [Plyr](https://github.com/radiantmediaplayer/rmp-create-vtt-thumbnails) [DPlayer](https://github.com/MoePlayer/DPlayer-thumbnails)
+- 修复部分 BUG
 
 ### v2.0.1
 - 添加 Plyr 播放器
