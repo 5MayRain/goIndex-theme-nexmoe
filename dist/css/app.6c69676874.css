@@ -339,18 +339,12 @@
     color: #ffff;
 }
 
-.mdui-progress-indeterminate {
-    background-color: #607d8b;
-}
-
 .mdui-dialog-actions .mdui-btn , .mdui-select-menu-item[selected]{
     color: #1e89f2;
 }
 
-.mdui-textfield-focus .mdui-textfield-input, .mdui-textfield-focus .mdui-textfield-input:hover{
-    border-bottom-color: #1E89F2;
-    -webkit-box-shadow: 0 1px 0 0 #1E89F2;
-    box-shadow: 0 1px 0 0 #1E89F2;
+#count {
+    color: #333 !important;
 }
 
 @media screen and (max-width: 1200px) {

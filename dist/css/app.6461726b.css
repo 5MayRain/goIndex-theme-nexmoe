@@ -73,3 +73,7 @@
 .titleBar .titleBar_container .titleBar_avatar img {
     border-color: rgba(42,64,87,0.5);
 }
+
+#count {
+    color: #DDDDDD !important;
+}
