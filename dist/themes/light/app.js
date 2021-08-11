@@ -8,6 +8,7 @@ document.write('<script src="//cdn.jsdelivr.net/npm/cdnbye@latest"></script>');
 document.write('<script src="//cdn.jsdelivr.net/npm/dplayer@1.26.0/dist/DPlayer.min.js"></script>');
 // plyr
 document.write('<script src="//cdn.rawgit.com/video-dev/hls.js/18bb552/dist/hls.min.js"></script>');
+document.write('<script src="//cdn.dashjs.org/latest/dash.all.min.js"></script>');
 document.write('<script src="//cdn.jsdelivr.net/npm/plyr@3.6.8/dist/plyr.min.js"></script>');
 // markdown支持
 document.write('<script src="//cdn.jsdelivr.net/npm/markdown-it@12.1.0/dist/markdown-it.min.js"></script>');
@@ -435,7 +436,8 @@ function append_files_to_list(path, files) {
                 });
             }
             var ext = p.split('.').pop().toLowerCase();
-            if ("|html|php|css|go|java|js|json|txt|sh|md|mp4|webm|avi|bmp|jpg|jpeg|png|gif|m4a|mp3|flac|wav|ogg|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|pdf|m3u8|".indexOf(`|${ext}|`) >= 0) {
+            const file_view = ThemeConfig.view;
+            if (file_view.indexOf(`|${ext}|`) >= 0) {
                 targetFiles.push(filepath);
                 p += "?a=view";
                 c += " view";
@@ -635,7 +637,8 @@ function append_search_result_to_list(files) {
         } else {
             var c = "file";
             var ext = item.name.split('.').pop().toLowerCase();
-            if ("|html|php|css|go|java|js|json|txt|sh|md|mp4|webm|avi|bmp|jpg|jpeg|png|gif|m4a|mp3|flac|wav|ogg|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|m3u8|".indexOf(`|${ext}|`) >= 0) {
+            const file_view = ThemeConfig.view;
+            if (file_view.indexOf(`|${ext}|`) >= 0) {
                 c += " view";
             }
             html += `<li class="mdui-list-item file mdui-ripple" target="_blank"><a id="${item['id']}" gd-type="${item.mimeType}" onclick="onSearchResultItemClick(this)" class="${c}">
@@ -737,11 +740,7 @@ function file(path) {
         return file_code(path);
     }
 
-    if ("|mp4|webm|avi|".indexOf(`|${ext}|`) >= 0) {
-        return file_video(path);
-    }
-
-    if ("|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|m3u8|".indexOf(`|${ext}|`) >= 0) {
+    if ("|mp4|webm|avi|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|m3u8|".indexOf(`|${ext}|`) >= 0) {
         return file_video(path);
     }
 
@@ -865,25 +864,30 @@ function file_video(path) {
   <div id="dplayer" class="mdui-video-fluid mdui-center" ></div>
   `;
 
-    playerUI = plyrUI;
+    const player_file = ThemeConfig.player_dp;
 
-    if (ext == 'flv') {
-        playerType = 'customFlv';
+    if (player_file.indexOf(`|${ext}|`) >= 0) {
         playerUI = dpUI;
-    } else if (ext == 'm3u8') {
-        playerType = 'customHls';
-        playerUI = dpUI;
-    } else if (ext == 'mpd') {
-        playerType = 'customDash';
-        playerUI = dpUI;
-    } else if (ext == 'mp4') {
-        playerType = 'mp4';
-    } else if (ext == 'webm') {
-        playerType = 'webm';
-    } else if (ext == 'ogg') {
-        playerType = 'ogg';
+        if (ext == 'flv') {
+            playerType = 'customFlv';
+        } else if (ext == 'm3u8') {
+            playerType = 'customHls';
+        } else if (ext == 'mpd') {
+            playerType = 'customDash';
+        } else {
+            playerType = 'auto';
+        }
     } else {
-        playerType = 'mp4';
+        playerUI = plyrUI;
+        if (ext == 'mp4') {
+            playerType = 'mp4';
+        } else if (ext == 'webm') {
+            playerType = 'webm';
+        } else if (ext == 'ogg') {
+            playerType = 'ogg';
+        } else {
+            playerType = 'mp4';
+        }
     }
 
     var content = `
@@ -946,6 +950,31 @@ function file_video(path) {
             });
         }
         window.player = player;
+    } else if (ext == 'mpd') {
+        const source = url;
+        const dash = dashjs.MediaPlayer().create();
+        const video = document.querySelector('video');
+        dash.initialize(video, source, true);
+        const player = new Plyr(video, {
+            controls: ['play-large', 'restart', 'play', 'progress', 'current-time', 'duration', 'mute', 'volume', 'captions', 'settings', 'pip', 'fullscreen'],
+            settings: ['captions', 'quality', 'speed', 'loop'],
+            i18n: {
+                speed: '速度',
+                normal: '正常',
+                quality: '质量',
+                captions: '字幕',
+                disabled: '禁用',
+            },
+            blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
+            autoplay: true,
+            disableContextMenu: false,
+            loop: {
+                active: true
+            },
+            captions: { active: true, update: true }
+        });
+        window.player = player;
+        window.dash = dash;
     } else {
         const player = new Plyr('#player', {
             controls: ['play-large', 'restart', 'play', 'progress', 'current-time', 'duration', 'mute', 'volume', 'captions', 'settings', 'pip', 'fullscreen'],
@@ -971,16 +1000,16 @@ function file_video(path) {
                 type: 'video/' + playerType,
                 size: 1080,
             }, ],
-            poster: urlPath + fileName + '.jpg',
+            poster: urlPath + ThemeConfig.video_cover,
             previewThumbnails: {
                 enabled: true,
-                src: urlPath + 'thumbnails.vtt',
+                src: urlPath + ThemeConfig.thumbnails[1].url,
             },
             tracks: [{
                 kind: 'captions',
                 label: 'default',
                 srclang: 'cn',
-                src: urlPath + fileName + '.vtt',
+                src: urlPath + ThemeConfig.video_subtitle,
                 default: true,
             }, ],
         };
@@ -997,8 +1026,8 @@ function file_video(path) {
         hotkey: true,
         preload: 'auto',
         video: {
-            pic: urlPath + fileName + '.jpg',
-            thumbnails: urlPath + 'thumbnails.jpg',
+            pic: urlPath + ThemeConfig.video_cover,
+            thumbnails: urlPath + ThemeConfig.thumbnails[0].url,
             quality: [{
                 name: 'HD',
                 url: url,
@@ -1031,7 +1060,7 @@ function file_video(path) {
             defaultQuality: 0,
         },
         subtitle: {
-            url: urlPath + fileName + '.vtt',
+            url: urlPath + ThemeConfig.video_subtitle,
             type: 'webvtt',
             fontSize: '25px',
             bottom: '10%',

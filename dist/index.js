@@ -1,7 +1,7 @@
 const authConfig = {
   "siteName": "GoIndex",  // 网站名称
   "siteIcon": "//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe@1.1.6/images/favicon.ico", //网站图标
-  "version": "2.0.2", // 程序版本
+  "version": "2.0.3", // 程序版本
   "client_id": "",
   "client_secret": "",
   "refresh_token": "",  // 授权token
@@ -70,7 +70,7 @@ const authConfig = {
  * 主题配置
  */
 const themeConfig = {
-  // 地址
+  // 仓库地址
   "url": "//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe",
   // 主题 ( light:亮色 | dark:深色 )
   "theme": "light", 
@@ -82,9 +82,9 @@ const themeConfig = {
   "avatar": "//cdn.jsdelivr.net/gh/5MayRain/ImageHosting/Blog/Website/avatar.png",
   // 背景图片
   "bimg": "//cdn.jsdelivr.net/gh/5MayRain/ImageHosting/Blog/Posts/2021/07/20/cover_01.jpg",
-  //显示菜单
+  // 显示菜单
   "menu_show": true,
-  // 菜单
+  // 菜单组
   "menus": [
     {
       name: "Blog",
@@ -95,6 +95,25 @@ const themeConfig = {
       url: "//drive.google.com"
     }
   ],
+  // 定义可预览的文件
+  "view": "|html|php|css|go|java|js|json|txt|sh|md|mp4|webm|avi|bmp|jpg|jpeg|png|gif|m4a|mp3|flac|wav|ogg|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|m3u8|",
+  // 使用 DPlayer 播放，未填入的默认使用 Plyr 播放
+  "player_dp": "|m3u8|flv|",
+  // 缩略图组
+  "thumbnails": [
+    {
+      name: "dplayer",
+      url: "Thumbnail/dplayer.jpg"
+    },
+    {
+      name: "plyr",
+      url: "Thumbnail/plyr.vtt"
+    }
+  ],
+  // 视频封面，${fileName} 表示当前视频的名字
+  "video_cover": "${fileName}.jpg",
+  // 视频字幕
+  "video_subtitle": "${fileName}.vtt",
 };
 
 /**

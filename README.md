@@ -22,6 +22,7 @@ nexmoe:  [demo.zgh.workers.dev/](https://demo.zgh.workers.dev/)
 3. 将代码部署到 [Cloudflare Workers](https://www.cloudflare.com/)
 
 ## 自定义
+### 模板
 ```bash
 themeConfig				//主题配置
 	url				//仓库地址
@@ -34,6 +35,61 @@ themeConfig				//主题配置
 	menus				//菜单组
 		name			//名称
 		url			//地址
+	view				//定义可预览的文件
+	player_dp			//使用 DPlayer 播放，未填入的默认使用 Plyr 播放
+	thumbnails			//缩略图组
+		name			//名称
+		url			//地址
+	video_cover			//视频封面
+	video_subtitle		//视频字幕
+```
+
+### 示例
+```bash
+  // 仓库地址
+  "url": "//cdn.jsdelivr.net/gh/5MayRain/goIndex-theme-nexmoe",
+  // 主题 ( light:亮色 | dark:深色 )
+  "theme": "light", 
+  // 主色
+  "main_color": "blue-grey",
+  // 强调色
+  "accent_color": "blue",
+  // 头像
+  "avatar": "//cdn.jsdelivr.net/gh/5MayRain/ImageHosting/Blog/Website/avatar.png",
+  // 背景图片
+  "bimg": "//cdn.jsdelivr.net/gh/5MayRain/ImageHosting/Blog/Posts/2021/07/20/cover_01.jpg",
+  // 显示菜单
+  "menu_show": true,
+  // 菜单组
+  "menus": [
+    {
+      name: "Blog",
+      url: "//mrzgh.top"
+    },
+    {
+      name: "Log in",
+      url: "//drive.google.com"
+    }
+  ],
+  // 定义可预览的文件
+  "view": "|html|php|css|go|java|js|json|txt|sh|md|mp4|webm|avi|bmp|jpg|jpeg|png|gif|m4a|mp3|flac|wav|ogg|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|m3u8|",
+  // 使用 DPlayer 播放，未填入的默认使用 Plyr 播放
+  "player_dp": "|m3u8|flv|",
+  // 缩略图组
+  "thumbnails": [
+    {
+      name: "dplayer",
+      url: "Thumbnail/dplayer.jpg"
+    },
+    {
+      name: "plyr",
+      url: "Thumbnail/plyr.vtt"
+    }
+  ],
+  // 视频封面，${fileName} 表示当前视频的名字
+  "video_cover": "${fileName}.jpg",
+  // 视频字幕
+  "video_subtitle": "${fileName}.vtt",
 ```
 
 ## 获取团队盘
@@ -41,6 +97,9 @@ themeConfig				//主题配置
 - [https://team.hackgence.com/](https://team.hackgence.com/)
 
 ## 更新日志
+
+### v2.0.3
+- 支持更多的自定义
 
 ### v2.0.2
 - 支持缩略图
