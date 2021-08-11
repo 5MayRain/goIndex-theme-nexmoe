@@ -890,6 +890,24 @@ function file_video(path) {
         }
     }
 
+    var video_cover = ThemeConfig.video_cover;
+    video_cover = video_cover.substring(video_cover.indexOf("$"), video_cover.lastIndexOf("."));
+    if (video_cover == "${fileName}") {
+        video_cover = ThemeConfig.video_cover;
+        video_cover = video_cover.substring(0,video_cover.lastIndexOf("$")) + fileName + video_cover.substring(video_cover.lastIndexOf("."));
+    } else {
+        video_cover = ThemeConfig.video_cover;
+    }
+
+    var video_subtitle = ThemeConfig.video_subtitle;
+    video_subtitle = video_subtitle.substring(video_subtitle.indexOf("$"), video_subtitle.lastIndexOf("."));
+    if (video_subtitle == "${fileName}") {
+        video_subtitle = ThemeConfig.video_subtitle;
+        video_subtitle = video_subtitle.substring(0,video_subtitle.lastIndexOf("$")) + fileName + video_subtitle.substring(video_subtitle.lastIndexOf("."));
+    } else {
+        video_subtitle = ThemeConfig.video_subtitle;
+    }
+
     var content = `
 <div class="mdui-container-fluid">
   <br>
@@ -1000,7 +1018,7 @@ function file_video(path) {
                 type: 'video/' + playerType,
                 size: 1080,
             }, ],
-            poster: urlPath + ThemeConfig.video_cover,
+            poster: urlPath + video_cover,
             previewThumbnails: {
                 enabled: true,
                 src: urlPath + ThemeConfig.thumbnails[1].url,
@@ -1009,7 +1027,7 @@ function file_video(path) {
                 kind: 'captions',
                 label: 'default',
                 srclang: 'cn',
-                src: urlPath + ThemeConfig.video_subtitle,
+                src: urlPath + video_subtitle,
                 default: true,
             }, ],
         };
@@ -1026,7 +1044,7 @@ function file_video(path) {
         hotkey: true,
         preload: 'auto',
         video: {
-            pic: urlPath + ThemeConfig.video_cover,
+            pic: urlPath + video_cover,
             thumbnails: urlPath + ThemeConfig.thumbnails[0].url,
             quality: [{
                 name: 'HD',
@@ -1060,7 +1078,7 @@ function file_video(path) {
             defaultQuality: 0,
         },
         subtitle: {
-            url: urlPath + ThemeConfig.video_subtitle,
+            url: urlPath + video_subtitle,
             type: 'webvtt',
             fontSize: '25px',
             bottom: '10%',

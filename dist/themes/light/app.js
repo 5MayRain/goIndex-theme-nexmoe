@@ -1027,7 +1027,7 @@ function file_video(path) {
                 kind: 'captions',
                 label: 'default',
                 srclang: 'cn',
-                src: urlPath + ThemeConfig.video_subtitle,
+                src: urlPath + video_subtitle,
                 default: true,
             }, ],
         };
