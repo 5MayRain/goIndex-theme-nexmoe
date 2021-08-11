@@ -41,7 +41,7 @@ themeConfig				//主题配置
 		name			//名称
 		url			//地址
 	video_cover			//视频封面
-	video_subtitle		//视频字幕
+	video_subtitle			//视频字幕
 ```
 
 ### 示例
