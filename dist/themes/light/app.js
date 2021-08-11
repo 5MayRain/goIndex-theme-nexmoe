@@ -890,6 +890,8 @@ function file_video(path) {
         }
     }
 
+    const video_cover = ThemeConfig.video_cover;
+
     var content = `
 <div class="mdui-container-fluid">
   <br>
@@ -1000,7 +1002,7 @@ function file_video(path) {
                 type: 'video/' + playerType,
                 size: 1080,
             }, ],
-            poster: urlPath + ThemeConfig.video_cover,
+            poster: urlPath + video_cover,
             previewThumbnails: {
                 enabled: true,
                 src: urlPath + ThemeConfig.thumbnails[1].url,
@@ -1060,7 +1062,7 @@ function file_video(path) {
             defaultQuality: 0,
         },
         subtitle: {
-            url: urlPath + ThemeConfig.video_subtitle,
+            url: urlPath + video_subtitle,
             type: 'webvtt',
             fontSize: '25px',
             bottom: '10%',
