@@ -1028,7 +1028,7 @@ function file_video(path) {
         hotkey: true,
         preload: 'auto',
         video: {
-            pic: urlPath + ThemeConfig.video_cover,
+            pic: urlPath + video_cover,
             thumbnails: urlPath + ThemeConfig.thumbnails[0].url,
             quality: [{
                 name: 'HD',
