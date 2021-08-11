@@ -890,7 +890,14 @@ function file_video(path) {
         }
     }
 
-    const video_cover = ThemeConfig.video_cover;
+    var video_cover = ThemeConfig.video_cover;
+    video_cover = video_cover.substring(0, video_cover.lastIndexOf("."));
+    if (video_cover == "${fileName}") {
+        video_cover = ThemeConfig.video_cover;
+        video_cover = fileName + video_cover.substring(video_cover.lastIndexOf("."));
+    } else {
+        video_cover = ThemeConfig.video_cover;
+    }
 
     var content = `
 <div class="mdui-container-fluid">
