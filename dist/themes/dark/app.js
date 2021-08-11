@@ -66,7 +66,7 @@ function init() {
   <dir class="titleBar_container">
     <div class="titleBar_avatar">
       <a class="titleBar_item" href="/">
-        <img src="https://cdn.jsdelivr.net/gh/5MayRain/ImageHosting/Blog/Website/avatar.png">
+        <img src="${ThemeConfig.avatar}">
       </a>
     </div>
     <div class="titleBar_nav">

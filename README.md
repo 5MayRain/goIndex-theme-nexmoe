@@ -97,6 +97,8 @@ themeConfig				//主题配置
 - [https://team.hackgence.com/](https://team.hackgence.com/)
 
 ## 更新日志
+### v2.0.5
+- 修复自定义头像不可用
 
 ### v2.0.4
 - 修复 `${fileName} ` 参数不可用
